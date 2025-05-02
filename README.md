@@ -35,18 +35,12 @@ Create a `.env` file in the project root and add your API credentials:
 
 ```ini
 PINECONE_API_KEY="your_pinecone_api_key"
-<<<<<<< HEAD
-GROQ_API_KEY ="your_openai_or_groq_key"
-=======
-groq_api_key="your_openai_or_groq_key"
->>>>>>> 8293aedde36afa17e9db8174da37beab92f640c9
+GROQ_API_KEY="your_openai_or_groq_key"
 ```
 
 ---
 
 ## 🧠 Indexing Data
-
-Run the following to store document embeddings to Pinecone:
 
 ```bash
 python store_index.py
@@ -60,7 +54,7 @@ python store_index.py
 python app.py
 ```
 
-Then open your browser and navigate to:
+Navigate to:
 
 ```bash
 http://localhost:5000
@@ -70,81 +64,91 @@ http://localhost:5000
 
 ## 🛠️ Tech Stack
 
-- **Python**
-- **LangChain**
-- **Flask**
-- **OpenAI GPT / Groq**
-- **Pinecone Vector DB**
+* **Python**
+* **LangChain**
+* **Flask**
+* **OpenAI GPT / Groq**
+* **Pinecone Vector DB**
 
-<<<<<<< HEAD
+---
 
-# AWS-CICD-Deployment-with-Github-Actions
+# 🚀 AWS CI/CD Deployment with GitHub Actions
 
-## 1. Login to AWS console.
+This guide explains how to deploy your project using GitHub Actions with AWS services (ECR & EC2).
 
-## 2. Create IAM user for deployment
+---
 
-	#with specific access
+## 1️⃣ Login to AWS Console
 
-	1. EC2 access : It is virtual machine
+Ensure you have access to the AWS Console with admin privileges.
 
-	2. ECR: Elastic Container registry to save your docker image in aws
+---
 
+## 2️⃣ Create IAM User for Deployment
 
-	#Description: About the deployment
+### 🔐 Required Permissions:
 
-	1. Build docker image of the source code
+* **AmazonEC2FullAccess**
+* **AmazonEC2ContainerRegistryFullAccess**
 
-	2. Push your docker image to ECR
+This user will be used for pushing Docker images and launching EC2 instances.
 
-	3. Launch Your EC2 
+---
 
-	4. Pull Your image from ECR in EC2
+## 3️⃣ Create an ECR Repository
 
-	5. Lauch your docker image in EC2
+Create an Elastic Container Registry to store Docker images.
 
-	#Policy:
+Example URI:
 
-	1. AmazonEC2ContainerRegistryFullAccess
+```bash
+xxxxxxxxxxxxxxxxxx.dkr.ecr.ap-south-1.amazonaws.com/medicalchatbot
+```
 
-	2. AmazonEC2FullAccess
+---
 
-	
-## 3. Create ECR repo to store/save docker image
-    - Save the URI: 440051999639.dkr.ecr.ap-south-1.amazonaws.com/medicalchatbot
+## 4️⃣ Create EC2 Instance
 
-	
-## 4. Create EC2 machine (Ubuntu) 
+Launch an Ubuntu EC2 instance where your Docker container will run.
 
-## 5. Open EC2 and Install docker in EC2 Machine:
-	
-	
-	#optinal
+---
 
-	sudo apt-get update -y
+## 5️⃣ Install Docker on EC2
 
-	sudo apt-get upgrade
-	
-	#required
+```bash
+sudo apt-get update -y
+sudo apt-get upgrade
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker ubuntu
+newgrp docker
+```
 
-	curl -fsSL https://get.docker.com -o get-docker.sh
+---
 
-	sudo sh get-docker.sh
+## 6️⃣ Configure EC2 as GitHub Self-Hosted Runner
 
-	sudo usermod -aG docker ubuntu
+Navigate to:
 
-	newgrp docker
-	
-# 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
+```text
+GitHub > Your Repository > Settings > Actions > Runners > New Self-hosted Runner
+```
 
+Choose **OS: Linux** and follow the setup instructions.
 
-# 7. Setup github secrets:
+---
 
-   - AWS_ACCESS_KEY_ID
-   - AWS_SECRET_ACCESS_KEY
-   - AWS_DEFAULT_REGION
-   - ECR_REPO
-   - PINECONE_API_KEY
-   - OPENAI_API_KEY
+## 7️⃣ Setup GitHub Secrets
 
+Add the following secrets to your GitHub repository:
+
+* `AWS_ACCESS_KEY_ID`
+* `AWS_SECRET_ACCESS_KEY`
+* `AWS_DEFAULT_REGION`
+* `ECR_REPO`
+* `PINECONE_API_KEY`
+* `OPENAI_API_KEY`
+
+---
+
+Let me know if you'd like this in Markdown file format or want help creating a `README.md`.
