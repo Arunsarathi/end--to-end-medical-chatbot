@@ -148,6 +148,3 @@ http://localhost:5000
    - PINECONE_API_KEY
    - OPENAI_API_KEY
 
-    
-=======
->>>>>>> 8293aedde36afa17e9db8174da37beab92f640c9
