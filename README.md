@@ -35,7 +35,11 @@ Create a `.env` file in the project root and add your API credentials:
 
 ```ini
 PINECONE_API_KEY="your_pinecone_api_key"
+<<<<<<< HEAD
 GROQ_API_KEY ="your_openai_or_groq_key"
+=======
+groq_api_key="your_openai_or_groq_key"
+>>>>>>> 8293aedde36afa17e9db8174da37beab92f640c9
 ```
 
 ---
@@ -72,6 +76,7 @@ http://localhost:5000
 - **OpenAI GPT / Groq**
 - **Pinecone Vector DB**
 
+<<<<<<< HEAD
 
 # AWS-CICD-Deployment-with-Github-Actions
 
@@ -144,3 +149,5 @@ http://localhost:5000
    - OPENAI_API_KEY
 
     
+=======
+>>>>>>> 8293aedde36afa17e9db8174da37beab92f640c9
